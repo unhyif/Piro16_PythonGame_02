@@ -166,7 +166,7 @@ def alcohol_game_run():
             alcohol_game.next_turn()
 
         elif user_input == "3":
-            game1.br_game()
+            game3.zero_game(alcohol_game)
             alcohol_game.next_turn()
 
         elif user_input == "4":
