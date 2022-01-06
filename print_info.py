@@ -95,3 +95,4 @@ def print_result_info(alcohol_game):
             f"{computer_user.name}(은)는 지금까지 {computer_user.amount}🍺! 치사량까지 {computer_user.lethal_dose-computer_user.amount}")
     print(
         "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+    time.sleep(1)
