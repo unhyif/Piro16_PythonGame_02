@@ -143,6 +143,7 @@ def is_anyone_dead(alcohol_game):
 
 def alcohol_game_run():
     print_game_start_info()
+    # alcohol_game: game object(current user, computer 유저의 수를 가지고 있음.)
     alcohol_game = game_setting()
 
     if alcohol_game is None:
