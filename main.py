@@ -133,10 +133,12 @@ def input_menu(alcohol_game):
 
 
 def is_anyone_dead(alcohol_game):
-    if alcohol_game.user.amount == alcohol_game.user.lethal_dose:
+    if alcohol_game.user.is_dead():
+        print(f"{user.name}(이)가 전사했습니다... 꿈나라에서는 편히 쉬시길..zzz")
         return True
     for user in alcohol_game.computer_user_list:
-        if user.amount == user.lethal_dose:
+        if user.is_dead():
+            print(f"{user.name}(이)가 전사했습니다... 꿈나라에서는 편히 쉬시길..zzz")
             return True
     return False
 
@@ -145,20 +147,21 @@ def alcohol_game_run():
     print_game_start_info()
     # alcohol_game: game object(current user, computer 유저의 수를 가지고 있음.)
     alcohol_game = game_setting()
-
+    print_result_info(alcohol_game)
     if alcohol_game is None:
         return
     while True:
         if is_anyone_dead(alcohol_game):
             time.sleep(1)
             print_game_end_info()
+            break
         # 게임 메뉴 출력
         print_game_menu()
         user_input = input_menu(alcohol_game)
         time.sleep(1)
 
         if user_input == "1":
-            game1.br_game()
+            game1.chef_game(alcohol_game)
             alcohol_game.next_turn()
 
         elif user_input == "2":
@@ -166,7 +169,7 @@ def alcohol_game_run():
             alcohol_game.next_turn()
 
         elif user_input == "3":
-            game1.br_game()
+            game3.zero_game(alcohol_game)
             alcohol_game.next_turn()
 
         elif user_input == "4":
