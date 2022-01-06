@@ -22,7 +22,6 @@ def print_apart_floor(floor):
         print(" |  ㅁ  ㅁ  ㅁ  | ")
     print(" ______________ ")
 
-    print(f"{floor}층에는")
 
 
 
@@ -33,4 +32,4 @@ def apart_game_run():
         if floor.isdigit() and (1 <= int(floor) <= 20):
             print_apart_floor(int(floor))
         else:
-            print("마셔!(입력이 잘못 되어도 마셔야죠?)")
+            print("동구밖 과수원샷~! 투샷~! 쓰리샷~! 치키치키 예! 마셔!")

@@ -22,6 +22,19 @@ class Game:
         self.user = user
         self.computer_num = computer_num
         self.computer_user_list = self.make_computer_user_list()
+        self.turn = user
+
+
+    def next_turn(self):
+        if self.turn == user:
+            self.turn = self.computer_user_list[0]
+        else:
+            for i in range(len(self.computer_user_list)):
+                if self.turn == self.computer_user_list[len(self.computer_user_list)-1]:
+                    self.turn = self.user
+                elif self.turn == self.computer_user_list[i]:
+                    self.turn = self.computer_user_list[i+1]
+
 
     @staticmethod
     def make_computer_user_list(computer_num):
@@ -100,9 +113,17 @@ def game_setting():
             print_wrong_input_info()
 
 
+def input_menu(alcohol_game, turn):
+    user_input = input('🍺  ' + turn.name + '(이)가 좋아하는 랜덤 게임~ 랜덤 게임~ 무슨 게임? : ')
+    return user_input
+
+
+def next_turn():
+
+
+
 def alcohol_game_run():
     print_game_start_info()
-    # alcohol_game: game object(current user, computer 유저의 수를 가지고 있음.)
     alcohol_game = game_setting()
 
     if alcohol_game is None:
@@ -110,30 +131,34 @@ def alcohol_game_run():
     while True:
         # 게임 메뉴 출력
         print_game_menu()
-        user_input = input('🍺  ' + alcohol_game.user.name + '(이)가 좋아하는 랜덤 게임~ 랜덤 게임~ 무슨 게임? : ')
+        user_input = input_menu(alcohol_game, turn)
+
         if user_input == "1":
-            # 자기 게임
             game1.br_game()
+            alcohol_game.next_turn()
+
         elif user_input == "2":
-            # 자기 게임
             game1.br_game()
+            alcohol_game.next_turn()
+
         elif user_input == "3":
-            # 자기 게임
             game1.br_game()
+            alcohol_game.next_turn()
+
         elif user_input == "4":
-            # 자기 게임
             game1.br_game()
+            alcohol_game.next_turn()
+
         elif user_input == "5":
-            # 아파트~아파트~
             game5.apart_game(alcohol_game)
+            alcohol_game.next_turn()
+
         elif user_input == "exit":
             print_game_end_info()
             break
         else:
             print_wrong_input_info()
-
+            continue
 
 if __name__ == '__main__':
     alcohol_game_run()
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
