@@ -22,7 +22,7 @@ def print_apart_floor(floor):
         print(" |  ㅁ  ㅁ  ㅁ  | ")
     print(" ______________ ")
 
-    print(f"{floor}층에는 누가")
+    print(f"{floor}층에는")
 
 
 
