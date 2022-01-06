@@ -124,7 +124,7 @@ def input_menu(alcohol_game):
     if alcohol_game.turn != alcohol_game.user:
         user_input = input('🍺  술게임 진행중! 다른 사람의 턴입니다. 그만하고 싶으면 \'exit\'를, 계속하시려면 아무키나 입력해주세요! :')
         if user_input != 'exit':
-            user_input = str(random.randint(1,5))
+            user_input = str(random.randint(1,5)) test
             print('🍺  ' + alcohol_game.turn.name + '(이)가 좋아하는 랜덤 게임~ 랜덤 게임~ 무슨 게임? : ' + user_input)
     else:
         print('🍺  술게임 진행중! 당신의 턴입니다. 그만하고 싶으면 \'exit\'를 입력해주세요!')
@@ -133,10 +133,10 @@ def input_menu(alcohol_game):
 
 
 def is_anyone_dead(alcohol_game):
-    if alcohol_game.user.amount == alcohol_game.user.lethal_dose:
+    if alcohol_game.user.is_dead():
         return True
     for user in alcohol_game.computer_user_list:
-        if user.amount == user.lethal_dose:
+        if user.is_dead():
             return True
     return False
 
@@ -145,13 +145,14 @@ def alcohol_game_run():
     print_game_start_info()
     # alcohol_game: game object(current user, computer 유저의 수를 가지고 있음.)
     alcohol_game = game_setting()
-
+    print_result_info(alcohol_game)
     if alcohol_game is None:
         return
     while True:
         if is_anyone_dead(alcohol_game):
             time.sleep(1)
             print_game_end_info()
+            break
         # 게임 메뉴 출력
         print_game_menu()
         user_input = input_menu(alcohol_game)
