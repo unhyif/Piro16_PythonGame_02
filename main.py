@@ -41,7 +41,7 @@ class Game:
 
     @staticmethod
     def make_computer_user_list(computer_num):
-        random_computer_user_list = [User('c승아', 6), User('c지현',4), User('c혜영', 5), User('c찬영', 3), User('c세윤', 2)]
+        random_computer_user_list = [User('c승아', 6), User('c지현',6), User('c혜영', 5), User('c찬영', 3), User('c세윤', 2)]
         index_list = []
         computer_user_list = []
 
@@ -165,7 +165,7 @@ def alcohol_game_run():
             alcohol_game.next_turn()
 
         elif user_input == "2":
-            game1.br_game()
+            game2.death_game(alcohol_game).drink(1)
             alcohol_game.next_turn()
 
         elif user_input == "3":
