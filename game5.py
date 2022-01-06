@@ -1,4 +1,3 @@
-from main import User, Game
 import time
 import random
 
