@@ -1,12 +1,14 @@
-from main import User, Game
+import main
 import random
 import time
 
-
+def chef_game(alcohol_game):
+    chef_game(alcohol_game)
+    
 menu=['떡볶이','비빔밥','김치찌개','부대찌개','치킨']
 menu_pick=random.choice(menu)
 
-def chef_game():
+def chef_game(alcohol_game):
     print(
         "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
     print("                                     오늘은 내가 요리사!! 오늘은 내가 요리사!!")
@@ -31,8 +33,7 @@ def chef_game():
             time.sleep(0.5)
             print('없음!')
             time.sleep(1)
-            print('')
-            print('(งᐖ)ว (งᐖ)ว (งᐖ)ว (งᐖ)ว(งᐖ)ว (งᐖ)ว 빠라바라밤 빠라바라밤 빠빠바빠바밤 원샷!!!(งᐖ)ว (งᐖ)ว(งᐖ)ว (งᐖ)ว (งᐖ)ว (งᐖ)ว\n')
+            alcohol_game.user
             break
 
         
