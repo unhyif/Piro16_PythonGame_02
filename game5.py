@@ -24,12 +24,14 @@ def print_apart_floor(floor):
 
 
 
-
-
-def apart_game_run():
+def apart_game_run(alcohole_game):
     while True:
-        floor = input('몇층?(1~20까지만 받아요~) : ')
+        floor = input('몇층까지 쌓아 올릴까요? (1~20까지만 쌓아 올릴 수 있습니다) : ')
         if floor.isdigit() and (1 <= int(floor) <= 20):
             print_apart_floor(int(floor))
         else:
-            print("동구밖 과수원샷~! 투샷~! 쓰리샷~! 치키치키 예! 마셔!")
+            print("    Σ( ˙꒳˙  )!?Σ( ˙꒳˙  )!?     입력 실수~~~~?     Σ( ˙꒳˙  )!?Σ( ˙꒳˙  )!?    ")
+            print("                                                                           ")
+            print("            (งᐖ)ว  동구밖 과수원샷~! 투샷~! 쓰리샷~! 치키치키 예!  (งᐖ)ว")
+            print(f"{alcohole_game.turn.name}(이)가 한 잔")
+            break
