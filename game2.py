@@ -7,14 +7,17 @@ def death_game(alcohol_game):
     
     game = Death_game(alcohol_game)
     game.print_death_intro(players)
+    time.sleep(1)
     print(f'''{game.origin.turn.name}님이 술래! 🤗)
 ~~~~~ 아 신난다😙 아 재미난다😆 더 게임 오브 데 스! ~~~~~\n''')
 
     if game.origin.turn != game.origin.user: # 컴퓨터가 술래일 때
         num = random.randint(2, 2*len(players))
+        time.sleep(1)
         print(f"{game.origin.turn.name} : {num} ❗❗❗")
     
     else:
+        time.sleep(1)
         while True:
             num = input(f"2 이상 {2*len(players)} 이하의 정수를 외쳐 주세요! ") # 술래가 외칠 숫자
             if not (num.isdigit() and (2 <= int(num) <= 2*len(players))):
@@ -24,7 +27,9 @@ def death_game(alcohol_game):
                 break
     print("")
 
+    time.sleep(1)
     choose_status = game.choose_someone(players) # 딕셔너리
+    time.sleep(1)
     loser = game.find_loser(choose_status, game.origin.turn.name, num) # 진 사람 이름(string)
     
     for player in players:
@@ -58,9 +63,11 @@ class Death_game:
         for n in range(1, num+2):
             if n == num+1:
                 print(f"{k} : 🤮")
+                time.sleep(1)
                 return k # 진 사람 이름(string)
 
             print(f"{k} : {n}! 😎👉 {choose_status[k]}")
+            time.sleep(0.5)
             k = choose_status[k] # 지목 당한 사람을 다음 지목 turn으로 변경
 
 
