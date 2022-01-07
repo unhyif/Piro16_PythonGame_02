@@ -1,4 +1,5 @@
 import random
+import time
 
 def death_game(alcohol_game):
     players = [alcohol_game.user] + alcohol_game.computer_user_list # User 객체들 리스트
@@ -79,4 +80,5 @@ class Death_game:
         print(f'''이번엔 {self.origin.turn.name}님부터 시작합니다! 2부터 {2*len(players)} 사이의 수를 부르시면 됩니다!
 ~~~ 아 신난다😙 아 재미난다😆 더 게임 오브 데 스! ~~~
 ''')
+        time.sleep(1)
 

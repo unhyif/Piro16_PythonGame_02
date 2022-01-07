@@ -1,6 +1,6 @@
 import main
 import random
-
+import time
 
 def zero_game(alcohol_game):
     print_zero_game_info()
