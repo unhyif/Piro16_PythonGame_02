@@ -15,6 +15,7 @@ import game4
 import game5
 import random
 import time
+import requests
 
 
 # 전체 게임에서 공통으로 쓰는 속성들을 담는 클래스
@@ -173,7 +174,7 @@ def alcohol_game_run():
             alcohol_game.next_turn()
 
         elif user_input == "4":
-            game1.br_game()
+            game4.record_game(alcohol_game)
             alcohol_game.next_turn()
 
         elif user_input == "5":
