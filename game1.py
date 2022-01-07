@@ -33,7 +33,7 @@ def chef_game(alcohol_game):
             time.sleep(0.5)
             print('없음!')
             time.sleep(1)
-            alcohol_game.user
+            alcohol_game.user.drink(1)
             break
 
         
