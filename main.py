@@ -15,6 +15,7 @@ import game4
 import game5
 import random
 import time
+import requests
 
 
 # 전체 게임에서 공통으로 쓰는 속성들을 담는 클래스
@@ -134,7 +135,7 @@ def input_menu(alcohol_game):
 
 def is_anyone_dead(alcohol_game):
     if alcohol_game.user.is_dead():
-        print(f"{user.name}(이)가 전사했습니다... 꿈나라에서는 편히 쉬시길..zzz")
+        print(f"{alcohol_game.user.name}(이)가 전사했습니다... 꿈나라에서는 편히 쉬시길..zzz")
         return True
     for user in alcohol_game.computer_user_list:
         if user.is_dead():
@@ -173,7 +174,7 @@ def alcohol_game_run():
             alcohol_game.next_turn()
 
         elif user_input == "4":
-            game1.br_game()
+            game4.record_game(alcohol_game)
             alcohol_game.next_turn()
 
         elif user_input == "5":

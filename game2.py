@@ -1,5 +1,6 @@
 from print_info import *
 import random
+import time
 
 def death_game(alcohol_game):
     players = [alcohol_game.user] + alcohol_game.computer_user_list # User 객체들 리스트
