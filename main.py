@@ -135,7 +135,7 @@ def input_menu(alcohol_game):
 
 def is_anyone_dead(alcohol_game):
     if alcohol_game.user.is_dead():
-        print(f"{user.name}(이)가 전사했습니다... 꿈나라에서는 편히 쉬시길..zzz")
+        print(f"{alcohol_game.user.name}(이)가 전사했습니다... 꿈나라에서는 편히 쉬시길..zzz")
         return True
     for user in alcohol_game.computer_user_list:
         if user.is_dead():
