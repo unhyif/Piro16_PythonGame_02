@@ -10,7 +10,7 @@ def death_game(alcohol_game):
 ~~~~~ 아 신난다😙 아 재미난다😆 더 게임 오브 데 스! ~~~~~\n''')
 
     if game.origin.turn != game.origin.user: # 컴퓨터가 술래일 때
-        num = random.randint(2, 2*len(players)+1)
+        num = random.randint(2, 2*len(players))
         print(f"{game.origin.turn.name} : {num} ❗❗❗")
     
     else:
