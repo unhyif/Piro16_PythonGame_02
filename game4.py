@@ -89,7 +89,7 @@ def record_game_run(alcohol_game):
         # 노래 가사 대기
         if current_player == alcohol_game.user:
             print()
-            input_lyric = input("♬ 당신의 차례입니다! {} 노래 가사 한 소절을 적어주세요 >_< ▷ ")
+            input_lyric = input(f"♬ 당신의 차례입니다! {title} 노래 가사 한 소절을 적어주세요 >_< ▷ ")
             print()
             print("▶▶▶ {} : ♬♪ {} ♪♬".format(current_player.name, input_lyric))
         else:
