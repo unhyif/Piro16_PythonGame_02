@@ -4,11 +4,9 @@ import re
 import random
 import time
 
-
 def record_game(alcohol_game):
-    print_record_game_info()  # 출력
-    record_game_run(alcohol_game)  # 게임 실행
-
+    print_record_game_info() # 출력
+    record_game_run(alcohol_game) # 게임 실행
 
 def print_record_game_info():
     print()
@@ -24,20 +22,19 @@ def print_record_game_info():
     print()
     time.sleep(1)
 
-
 def record_game_run(alcohol_game):
+
     # 노래 선곡
     if alcohol_game.turn.name == alcohol_game.user.name:
         title = input("♬ 노래 제목을 !정확하게! 입력해주세요◎_◎ ▷ ")
     else:
-        title_list = ["잔소리", "예뻤어", "신호등", "Next level", "라일락", "살짝 설렜어", "밤편지", "봄날", "아무노래", "아로하", "오랜 날 오랜 밤", "가시",
-                      "작은 것들을 위한 시", "Psycho"]
+        title_list = ["잔소리", "예뻤어", "신호등", "Next level", "라일락", "살짝 설렜어", "밤편지", "봄날", "아무노래", "아로하", "오랜 날 오랜 밤", "가시", "작은 것들을 위한 시", "Psycho"]
         title = random.choice(title_list)
+
 
     # 크롤링 - 실패 시 발제자 샷
     try:
-        url = "https://search.naver.com/search.naver?sm=tab_hty.top&where=nexearch&query={}+가사&oquery={}&tqi=hONOUdprvxZssLNoeOsssssssER-390973".format(
-            title, title)
+        url = "https://search.naver.com/search.naver?sm=tab_hty.top&where=nexearch&query={}+가사&oquery={}&tqi=hONOUdprvxZssLNoeOsssssssER-390973".format(title, title)
         response = requests.get(url)
         soup = bs(response.text, "html.parser")
         lyric_html = soup.select_one("._cm_content_area_song_lyric p")
@@ -51,8 +48,8 @@ def record_game_run(alcohol_game):
         lyric_text = re.sub(r'[^0-9a-zA-Z가-힣]', '', lyric_text)  # 띄어쓰기, 문장 부호 없애는 전처리
         lyric_list = []  # 문장 단위로 가사가 구분된 리스트
         for sentence in lyric.split("\n"):
-            if sentence.strip() != '' and sentence.strip() not in lyric_list:
-                lyric_list.append(sentence.strip())
+          if sentence.strip() != '' and sentence.strip() not in lyric_list:
+            lyric_list.append(sentence.strip())
 
         print()
         print("♩ {} 님이 >>> {} <<< 노래를 골랐습니다!".format(alcohol_game.turn.name, title))
@@ -73,6 +70,7 @@ def record_game_run(alcohol_game):
         time.sleep(1)
         return  # 게임 종료
 
+
     # 게임 진행
     player_list = [alcohol_game.user]
     player_list.extend(alcohol_game.computer_user_list)
@@ -80,12 +78,13 @@ def record_game_run(alcohol_game):
     input_history = []
 
     while True:
-
+        
         # 현재 순서
         if player_list.index(current_player) == len(player_list) - 1:
             current_player = player_list[0]
         else:
             current_player = player_list[player_list.index(current_player) + 1]
+
 
         # 노래 가사 대기
         if current_player == alcohol_game.user:
@@ -100,13 +99,12 @@ def record_game_run(alcohol_game):
                 print()
                 print("▶▶▶ {} : ♬♪ {} ♪♬".format(current_player.name, input_lyric))
             else:
-                input_lyric = random.choice(
-                    ["음........................ㅜㅜㅜㅜㅜ", "나 이 노래 몰라 ㅠㅠㅠㅠㅠㅠ", "....그냥 마시겠습니다~", ".....???? 이게 무슨 노래야",
-                     ".......................ㅎㅎㅎㅎㅎㅎㅎㅎ"])
+                input_lyric = random.choice(["음........................ㅜㅜㅜㅜㅜ", "나 이 노래 몰라 ㅠㅠㅠㅠㅠㅠ", "....그냥 마시겠습니다~", ".....???? 이게 무슨 노래야", ".......................ㅎㅎㅎㅎㅎㅎㅎㅎ"])
                 print()
                 print("▶▶▶ {} : {}".format(current_player.name, input_lyric))
-
+        
         time.sleep(1)
+
 
         # 노래 가사 검사
         input_lyric = re.sub(r'[^0-9a-zA-Z가-힣]', '', input_lyric)  # 띄어쓰기, 문장 부호 없애는 전처리
@@ -114,12 +112,12 @@ def record_game_run(alcohol_game):
         short = False
 
         for start in range(len(lyric_text) - len(input_lyric) + 1):
-            if input_lyric == lyric_text[start:start + len(input_lyric)]:
+            if input_lyric == lyric_text[start:start+len(input_lyric)]:
                 valid = True  # 가사에 있는 가사
-
+            
         for past_input in input_history:
             for start in range(len(past_input) - len(input_lyric) + 1):
-                if input_lyric == past_input[start:start + len(input_lyric)]:
+                if input_lyric == past_input[start:start+len(input_lyric)]:
                     valid = False  # 이미 나온 가사
 
         input_history.append(input_lyric)
@@ -152,5 +150,5 @@ def record_game_run(alcohol_game):
             print()
             current_player.drink(1)
             break
-
-
+            
+    

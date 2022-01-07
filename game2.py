@@ -1,3 +1,4 @@
+from print_info import *
 import random
 import time
 
@@ -6,15 +7,29 @@ def death_game(alcohol_game):
     
     game = Death_game(alcohol_game)
     game.print_death_intro(players)
+    print(f'''{game.origin.turn.name}님이 술래! 🤗)
+~~~~~ 아 신난다😙 아 재미난다😆 더 게임 오브 데 스! ~~~~~\n''')
 
-    num = random.randint(2, 2*len(players)+1) # 술래가 외칠 숫자
-    print(f"{game.origin.turn.name} : {num} ❗❗❗\n")
+    if game.origin.turn != game.origin.user: # 컴퓨터가 술래일 때
+        num = random.randint(2, 2*len(players))
+        print(f"{game.origin.turn.name} : {num} ❗❗❗")
+    
+    else:
+        while True:
+            num = input(f"2 이상 {2*len(players)} 이하의 정수를 외쳐 주세요! ") # 술래가 외칠 숫자
+            if not (num.isdigit() and (2 <= int(num) <= 2*len(players))):
+                print_wrong_input_info()
+            else:
+                num = int(num)
+                break
+    print("")
+
     choose_status = game.choose_someone(players) # 딕셔너리
     loser = game.find_loser(choose_status, game.origin.turn.name, num) # 진 사람 이름(string)
     
     for player in players:
         if player.name == loser:
-            return player # 진 User 객체
+            player.drink(1)
 
 
 class Death_game:
@@ -49,8 +64,6 @@ class Death_game:
             k = choose_status[k] # 지목 당한 사람을 다음 지목 turn으로 변경
 
 
-
-
     @staticmethod
     def make_name_list(main_game, players): # 술래인 사람의 이름이 맨 앞에 오도록, User 객체들의 이름 리스트를 생성하는 기능
         players_name = []
@@ -76,9 +89,4 @@ class Death_game:
     $$ |  $$ |  $$ |$$$$$$$$/       $$ \__$$ /$$$$$$$ |$$ | $$ | $$ |$$$$$$$$/       $$ \__$$ |$$ |            $$ |__$$ |$$$$$$$$/ /$$$$$$$ |  $$ |/  |$$ |  $$ |
     $$ |  $$ |  $$ |$$       |      $$    $$/$$    $$ |$$ | $$ | $$ |$$       |      $$    $$/ $$ |            $$    $$/ $$       |$$    $$ |  $$  $$/ $$ |  $$ |
     $$/   $$/   $$/  $$$$$$$/        $$$$$$/  $$$$$$$/ $$/  $$/  $$/  $$$$$$$/        $$$$$$/  $$/             $$$$$$$/   $$$$$$$/  $$$$$$$/    $$$$/  $$/   $$/ 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ''')
-        print(f'''이번엔 {self.origin.turn.name}님부터 시작합니다! 2부터 {2*len(players)} 사이의 수를 부르시면 됩니다!
-~~~ 아 신난다😙 아 재미난다😆 더 게임 오브 데 스! ~~~
 ''')
-        time.sleep(1)
-
