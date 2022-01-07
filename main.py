@@ -162,7 +162,7 @@ def alcohol_game_run():
         time.sleep(1)
 
         if user_input == "1":
-            game1.chef_game(alcohol_game)
+            game1.chef_game_run(alcohol_game)
             alcohol_game.next_turn()
 
         elif user_input == "2":

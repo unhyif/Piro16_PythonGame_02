@@ -103,5 +103,6 @@ def zero_game_run(alcohol_game):
             else: #틀렸으면 다음턴
                 print(alcohol_game.turn.name,'님 아쉽게도 이기지 못했습니다ㅠㅠ 다음 턴을 기대해봐요!')
                 print('-------------------------')
-                alcohol_game.next_turn() 
+                alcohol_game.next_turn()
+                
                 
