@@ -15,8 +15,6 @@ import game4
 import game5
 import random
 import time
-import requests
-
 
 # 전체 게임에서 공통으로 쓰는 속성들을 담는 클래스
 class Game:
@@ -123,14 +121,14 @@ def game_setting():
 
 def input_menu(alcohol_game):
     if alcohol_game.turn != alcohol_game.user:
-        user_input = input('🍺  술게임 진행중! 다른 사람의 턴입니다. 그만하고 싶으면 \'exit\'를, 계속하시려면 아무키나 입력해주세요! :')
+        user_input = input('🍺  술게임 진행중! 다른 사람의 턴입니다. 그만하고 싶으면 \'exit\'를, 계속하시려면 아무키나 입력해주세요! :').lower()
         if user_input != 'exit':
             user_input = str(random.randint(1,5))
             # 발표 시연을 위한 코드 user_input = input('🍺  ' + alcohol_game.turn.name + '(이)가 좋아하는 랜덤 게임~ 랜덤 게임~ 무슨 게임? : ')
             print('🍺  ' + alcohol_game.turn.name + '(이)가 좋아하는 랜덤 게임~ 랜덤 게임~ 무슨 게임? : ' + user_input)
     else:
         print('🍺  술게임 진행중! 당신의 턴입니다. 그만하고 싶으면 \'exit\'를 입력해주세요!')
-        user_input = input('🍺  ' + alcohol_game.turn.name + '(이)가 좋아하는 랜덤 게임~ 랜덤 게임~ 무슨 게임? : ')
+        user_input = input('🍺  ' + alcohol_game.turn.name + '(이)가 좋아하는 랜덤 게임~ 랜덤 게임~ 무슨 게임? : ').lower()
     return user_input
 
 
